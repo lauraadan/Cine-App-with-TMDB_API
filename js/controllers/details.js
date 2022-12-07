@@ -2,8 +2,8 @@ import { getMovieDetails, getMovieVideo, IMG_URL } from "../api.js"
 
 
 const printBackdrop = (image) => {
-    console.log('imagen', image)
-    console.log(document.querySelector('#backdrop'))
+    // console.log('imagen', image)
+    // console.log(document.querySelector('#backdrop'))
     document.querySelector('#backdrop').style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.25),
     rgba(0,0,0,1)), url('${IMG_URL + image}')`
 }
@@ -32,7 +32,6 @@ const printTrailer = (video) => {
 export const loadDetails = async (id) => {
     const details = await getMovieDetails(id);
     console.log(details);
-    // Comprobamos si existe al pelicula
     if (details.success && details.success == false) {
         location.hash = '#not-found'
     }
@@ -43,7 +42,7 @@ export const loadDetails = async (id) => {
     if (videoInfo.results.length > 0)
         printTrailer(videoInfo.results[0].key)
     else {
-        document.querySelector('.video').innerHTML = '<h2 class="title has-text-centered">Trailer no disponible</h2>'
+        document.querySelector('.video').innerHTML = '<h2 class="title has-text-centered">Trailer not available</h2>'
     }
 
 }
